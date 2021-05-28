@@ -1,4 +1,4 @@
-package com.vite.cli
+package com.rxliuli.vite.cli
 
 import com.intellij.ide.util.projectWizard.WizardContext
 import com.intellij.openapi.module.WebModuleBuilder

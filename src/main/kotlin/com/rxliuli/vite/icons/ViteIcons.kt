@@ -1,4 +1,4 @@
-package com.vite.icons
+package com.rxliuli.vite.icons
 
 import com.intellij.openapi.util.IconLoader
 

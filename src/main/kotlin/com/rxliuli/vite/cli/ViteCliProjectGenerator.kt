@@ -1,12 +1,9 @@
-package com.vite.cli
+package com.rxliuli.vite.cli
 
 import com.intellij.execution.filters.Filter
-import com.intellij.execution.process.ProcessHandler
 import com.intellij.ide.util.projectWizard.SettingsStep
 import com.intellij.lang.javascript.boilerplate.NpmPackageProjectGenerator
 import com.intellij.lang.javascript.boilerplate.NpxPackageDescriptor
-import com.intellij.openapi.application.ApplicationManager
-import com.intellij.openapi.module.Module
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.roots.ContentEntry
 import com.intellij.openapi.util.Key
@@ -14,7 +11,7 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.platform.ProjectGeneratorPeer
 import com.intellij.ui.components.JBList
 import com.intellij.util.ui.UIUtil
-import com.vite.icons.ViteIcons
+import com.rxliuli.vite.icons.ViteIcons
 import java.io.File
 import javax.swing.*
 
@@ -22,7 +19,7 @@ class ViteCliProjectGenerator : NpmPackageProjectGenerator() {
     private val PackageName = "@vitejs/create-app"
 
     override fun getName(): String {
-        return "Vite CLI"
+        return "Create Vite Project"
     }
 
     override fun getDescription(): String {

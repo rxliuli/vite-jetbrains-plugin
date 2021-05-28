@@ -4,7 +4,7 @@ plugins {
     id 'org.jetbrains.kotlin.jvm' version '1.4.32'
 }
 
-group 'com.vite'
+group 'com.rxliuli'
 version '0.1.0'
 
 repositories {
@@ -21,7 +21,7 @@ dependencies {
 intellij {
     type = 'IU'
     version '2021.1'
-    pluginName = 'vite'
+    pluginName = 'vite-jetbrains-plugin'
     plugins = [
             'JavaScriptLanguage',
     ]
