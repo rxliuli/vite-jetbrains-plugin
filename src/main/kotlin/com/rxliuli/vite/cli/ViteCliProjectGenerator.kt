@@ -11,19 +11,20 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.platform.ProjectGeneratorPeer
 import com.intellij.ui.components.JBList
 import com.intellij.util.ui.UIUtil
-import com.rxliuli.vite.icons.ViteIcons
+import com.rxliuli.vite.ViteIcons
+import com.rxliuli.vite.ViteMessage
 import java.io.File
 import javax.swing.*
 
 class ViteCliProjectGenerator : NpmPackageProjectGenerator() {
-    private val PackageName = "@vitejs/create-app"
+    private val packageName = "@vitejs/create-app"
 
     override fun getName(): String {
-        return "Create Vite Project"
+        return ViteMessage.msg("vite.project.generator.name")
     }
 
     override fun getDescription(): String {
-        return "创建一个 Vite 项目"
+        return ViteMessage.msg("vite.project.generator.description")
     }
 
     override fun getIcon(): Icon {
@@ -37,18 +38,18 @@ class ViteCliProjectGenerator : NpmPackageProjectGenerator() {
     }
 
     override fun packageName(): String {
-        return PackageName
+        return packageName
     }
 
     override fun presentablePackageName(): String {
-        return "Vite CLI"
+        return ViteMessage.msg("vite.project.generator.presentablePackageName")
     }
 
     override fun getNpxCommands(): List<NpxPackageDescriptor.NpxCommand> {
-        return listOf(NpxPackageDescriptor.NpxCommand(PackageName, "create-app"))
+        return listOf(NpxPackageDescriptor.NpxCommand(packageName, "create-app"))
     }
 
-    final val SettingsTemplateKey = Key.create<String>("template")
+    val settingsTemplateKey = Key.create<String>("template")
 
     override fun createPeer(): ProjectGeneratorPeer<Settings> {
         val pluginNameTextField = JBList(
@@ -72,7 +73,7 @@ class ViteCliProjectGenerator : NpmPackageProjectGenerator() {
                 pluginNameTextField.setSelectedValue("react-ts", true)
                 settingsStep.addSettingsField(
                     UIUtil.replaceMnemonicAmpersand(
-                        "请选择一个模板"
+                        ViteMessage.msg("vite.project.generator.settings.template")
                     ),
                     pluginNameTextField
                 )
@@ -81,7 +82,7 @@ class ViteCliProjectGenerator : NpmPackageProjectGenerator() {
             override fun getSettings(): Settings {
                 val settings = super.getSettings()
                 settings.putUserData(
-                    SettingsTemplateKey,
+                    settingsTemplateKey,
                     pluginNameTextField.selectedValue
                 )
                 return settings
@@ -90,7 +91,7 @@ class ViteCliProjectGenerator : NpmPackageProjectGenerator() {
     }
 
     override fun generatorArgs(project: Project, baseDir: VirtualFile, settings: Settings): Array<String> {
-        val template = settings.getUserData<String>(SettingsTemplateKey)
+        val template = settings.getUserData<String>(settingsTemplateKey)
         return arrayOf(" ${baseDir.name} --template $template")
     }
 
