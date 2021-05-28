@@ -5,7 +5,6 @@ import com.intellij.execution.process.ProcessHandler
 import com.intellij.ide.util.projectWizard.SettingsStep
 import com.intellij.lang.javascript.boilerplate.NpmPackageProjectGenerator
 import com.intellij.lang.javascript.boilerplate.NpxPackageDescriptor
-import com.intellij.openapi.application.Application
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.module.Module
 import com.intellij.openapi.project.Project
@@ -98,14 +97,8 @@ class ViteCliProjectGenerator : NpmPackageProjectGenerator() {
         return arrayOf(" ${baseDir.name} --template $template")
     }
 
-    override fun generateProject(project: Project, baseDir: VirtualFile, settings: Settings, module: Module) {
-//        baseDir.delete(project) // TODO 此处无法真正清理
-        super.generateProject(project, baseDir, settings, module)
-    }
-
-    override fun onProcessHandlerCreated(processHandler: ProcessHandler) {
-
-        super.onProcessHandlerCreated(processHandler)
+    override fun generateInTemp(): Boolean {
+        return true
     }
 
     override fun workingDir(settings: Settings?, baseDir: VirtualFile): File {
