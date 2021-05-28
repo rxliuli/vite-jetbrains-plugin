@@ -1,6 +1,6 @@
 <idea-plugin>
     <id>com.rxliuli.create-vite-project</id>
-    <name>Create Vite Project</name>
+    <name>Vite CLI</name>
     <vendor email="rxliuli@gmail.com" url="https://github.com/rxliuli/create-vite-project">com.rxliuli</vendor>
 
     <description>创建一个 vite 项目，非常类似于 vue-cli 的插件，直接使用 vue 官方 `npx create-vite-app` 命令</description>
@@ -8,6 +8,7 @@
     <!-- please see https://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
          on how to target different products -->
     <depends>com.intellij.modules.platform</depends>
+    <depends>JavaScript</depends>
 
     <extensions defaultExtensionNs="com.intellij">
         <projectTemplatesFactory implementation="com.vite.cli.ViteProjectTemplateFactory"/>
