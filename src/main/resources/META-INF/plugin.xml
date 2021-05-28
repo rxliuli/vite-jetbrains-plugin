@@ -11,8 +11,10 @@
     <depends>JavaScript</depends>
 
     <extensions defaultExtensionNs="com.intellij">
-        <projectTemplatesFactory implementation="com.rxliuli.vite.cli.ViteProjectTemplateFactory"/>
-        <!-- Add your extensions here -->
+        <directoryProjectGenerator
+                implementation="com.rxliuli.vite.cli.ViteCliProjectGenerator"/>  <!-- works in WebStorm and other SmallIDEs -->
+        <projectTemplatesFactory
+                implementation="com.rxliuli.vite.cli.ViteProjectTemplateFactory"/> <!-- works in IntelliJ IDEA -->
     </extensions>
 
     <actions>
